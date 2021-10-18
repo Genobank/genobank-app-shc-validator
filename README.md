@@ -1,1 +1,1 @@
-# shc-validator-nuxt
+# genobank-app-shc-validator
