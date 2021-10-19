@@ -22,7 +22,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/qr', mode: 'client' },
+    // { src: '~/plugins/qr-generator', mode: 'client' },
+    { src: '~/plugins/qr-reader', mode: 'client' },
   ],
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
