@@ -6,7 +6,6 @@
           <qrcode-capture @decode="onDecode" />
           <div id="qrCode"></div>
           <p><b>{{ resultVerification }}</b></p>
-          <!-- <canvas id="canvas" ref="canvas" class="canvas" /> -->
       </div>
     </div>
   </div>
@@ -14,13 +13,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-// import QrcodeVue from 'qrcode.vue'
 
 export default Vue.extend({ 
-
-  // components: {
-  //   QrcodeVue,
-  // },
   data () {
     return {
       result: '',
@@ -31,11 +25,10 @@ export default Vue.extend({
   },
   head: () => {
     return {
-      title: "QRCode",
+      title: "SHC Validator app",
       script: [
         {
           hid: "QRCode",
-          // src: "https://jojotoo-static.oss-cn-shanghai.aliyuncs.com/resources/script/qrcode.min.js",
           src: "../js/qrcode.min.js",
           defer: true,
         },
