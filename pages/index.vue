@@ -5,6 +5,7 @@
           <p class="decode-result text-wrap text-break">Last result: <b>{{ result }}</b></p>
           <qrcode-capture @decode="onDecode" />
           <div id="qrCode"></div>
+          <button v-if="download" @click="downloadPdf">Download</button>
           <p><b>{{ resultVerification }}</b></p>
       </div>
     </div>
@@ -21,6 +22,7 @@ export default Vue.extend({
       resultVerification: '',
       qrCode: '',
       url: '',
+      download: false,
     }
   },
   head: () => {
@@ -30,6 +32,16 @@ export default Vue.extend({
         {
           hid: "QRCode",
           src: "../js/qrcode.min.js",
+          defer: true,
+        },
+         {
+          hid: "PDFDocument",
+          src: "../js/pdfkit.standalone.js",
+          defer: true,
+        },
+        {
+          hid: "blobStream",
+          src: "../js/blob-stream.min.js",
           defer: true,
         },
       ]
@@ -46,11 +58,49 @@ export default Vue.extend({
         correctLevel: (window as any).QRCode.CorrectLevel.L
       });
     },
+    async downloadPdf() {
+        const doc = new (window as any).PDFDocument({
+          margins: {
+            top: 60,
+            bottom: 60,
+            left: 40,
+            right: 40,
+          }
+       });
+       const stream = doc.pipe((window as any).blobStream());
+       const qrcode = document.getElementById("qrCode")
+       const img = (qrcode as any).getElementsByTagName('img');
+       doc.image(img[0].src, 60, 60, { width: 300 });
+       doc.end();
+       stream.on('finish', function () {
+        // get a blob you can do whatever you like with
+        const blob = stream.toBlob('application/pdf');
+       
+        const fileName = `covid result.pdf`;
+        if ((navigator as any).msSaveBlob) {
+          // IE 10+
+          (navigator as any).msSaveBlob(blob, fileName);
+        } else {
+          const link = document.createElement('a');
+          // Browsers that support HTML5 download attribute
+          if (link.download !== undefined) {
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', fileName);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }
+        }
+      });
+    },
     async onDecode (result: any) {
       this.result = result
 
       this.url = `https://genobank.io/test/shc/#${result.substr(5)}`;
       this.getQRCode();
+      this.download = true;
 
       const response = await fetch(`https://apishc.genobank.io/validate`, {
         method: 'POST',
