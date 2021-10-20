@@ -61,11 +61,7 @@
 				</div>
 			</div>
 		</div>
-    <div class="row">
-      <div class="col-12">
-        	<p class="decode-result text-wrap text-break p-3">Lab result: <b>{{ result }}</b></p>
-      </div>
-    </div>
+   
 	</div>
 </template>
 <script lang="ts">
