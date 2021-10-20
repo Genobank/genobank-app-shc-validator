@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-sm-12">
           <p class="decode-result text-wrap text-break">Last result: <b>{{ result }}</b></p>
-          <qrcode-capture @decode="onDecode" />
+          <qrcode-capture @decode="onDecode"></qrcode-capture>
           <div id="qrCode"></div>
           <button v-if="download" @click="downloadPdf">Download</button>
           <p><b>{{ resultVerification }}</b></p>
