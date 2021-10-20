@@ -16,13 +16,13 @@ export default {
     ]
   },
 
+  mode: 'spa',
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    // { src: '~/plugins/qr-generator', mode: 'client' },
     { src: '~/plugins/qr-reader', mode: 'client' },
   ],
   // Auto import components: https://go.nuxtjs.dev/config-components
