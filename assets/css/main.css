@@ -3958,6 +3958,10 @@
   .font-weight-light {
       font-weight: 400;
   }
+
+  .decode-result {
+    font-size:11px;
+  }
   h2{margin-top:0;margin-bottom:.5rem;}
   p{margin-top:0;margin-bottom:1rem;}
   a{color:#007bff;text-decoration:none;background-color:transparent;}
