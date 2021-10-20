@@ -1,12 +1,103 @@
 <template>
   <div class="container">
+  <div class="row">
+  <div class="col-md-12 mt-5 ">
+
+						<a class="navbar-brand justify-content-center mx-auto d-flex" href="https://genobank.io">
+						
+							<picture>
+								<source media="(max-width: 799px)" srcset="https://genobank.io/images/GenoBank.io_logo@2x.svg">
+								<source media="(min-width: 800px)" srcset="https://genobank.io/images/GenoBank.io_logo@2x.svg">
+								<img class="img-fluid logo" src="https://genobank.io/images/GenoBank.io_logo.png" alt="GenoBank.io Logo">
+							</picture>
+						</a>
+							<p id="loginInformation" class="logininforamtion subtitle mt-2 mx-auto text-center"></p>
+
+				</div>
+  </div>
     <div class="row">
-      <div class="col-sm-12">
-          <p class="decode-result text-wrap text-break">Last result: <b>{{ result }}</b></p>
-          <qrcode-capture @decode="onDecode" />
-          <div id="qrCode"></div>
-          <button v-if="download" @click="downloadPdf">Download</button>
-          <p><b>{{ resultVerification }}</b></p>
+      <div class="col-md-4 p-2">
+        <div class="cardbox  text-center p-3">
+          <h3>Upload Vaccine QR Code</h3>
+    
+          <qrcode-capture @decode="onDecode" class="img-fluid"/>
+          <div id="qrCode" class="img-fluid p-3"></div>
+          <button v-if="download" @click="downloadPdf" class="btn btn-primary col-12">Download</button>
+           
+         </div>
+      </div>
+       <div class="col-md-8  p-5 results">
+      <h2>Results</h2>
+
+         <p class="font-weight-light my-0">
+            <span class="localized en">Name</span>
+
+          </p>
+          <p class="font-weight-bold lead " ><span>Daniel</span> <span>Uribe</span></p>
+   
+           <p class="font-weight-light my-0">
+            <span class="localized en" >Date of Birth</span>
+
+          </p>
+          <p class="font-weight-bold lead " >1976-02-19</p>
+         <div class="row">
+         <div class="col-md-6 ">
+           <p class="font-weight-light my-0">
+            <span class="localized en" >Test Type 1</span>
+
+          </p>
+          <p class="font-weight-bold lead " >Immunization 207</p>
+
+           <p class="font-weight-light my-0">
+            <span class="localized en" >Status</span>
+
+          </p>
+          <p class="font-weight-bold lead " >Complete</p>
+
+            <p class="font-weight-light my-0">
+            <span class="localized en">Date</span>
+
+          </p>
+          <p class="font-weight-bold lead " >2021-03-25</p>
+        
+           <p class="font-weight-light my-0">
+            <span class="localized en" >Lot Number</span>
+
+          </p>
+          <p class="font-weight-bold lead " >028A</p>
+
+          </div>
+            <div class="col-md-6 ">
+             <p class="font-weight-light my-0">
+            <span class="localized en" >Test Type 2</span>
+
+          </p>
+          <p class="font-weight-bold lead " >Immunization 207</p>
+
+           <p class="font-weight-light my-0">
+            <span class="localized en" >Status</span>
+
+          </p>
+          <p class="font-weight-bold lead " >Complete</p>
+
+            <p class="font-weight-light my-0">
+            <span class="localized en">Date</span>
+
+          </p>
+          <p class="font-weight-bold lead " >2021-04-22</p>
+        
+           <p class="font-weight-light my-0">
+            <span class="localized en" >Lot Number</span>
+
+          </p>
+          <p class="font-weight-bold lead " >045B21A</p>
+
+         
+        
+          </div>
+                  <p>{{ resultVerification }}</p>
+               <p class="decode-result text-wrap text-break">Data result: <b>{{ result }}</b></p>
+          </div>
       </div>
     </div>
   </div>
@@ -42,6 +133,11 @@ export default Vue.extend({
         {
           hid: "blobStream",
           src: "../js/blob-stream.min.js",
+          defer: true,
+        },
+        {
+          hid: "axios",
+          src: "https://cdn.jsdelivr.net/npm/axios@0.23.0/dist/axios.js",
           defer: true,
         },
       ]
@@ -116,6 +212,7 @@ export default Vue.extend({
 
       // TODO show basic info from the json
       this.resultVerification = JSON.stringify(res, null, 2);
+
     }
   }
 
