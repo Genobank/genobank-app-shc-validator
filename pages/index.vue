@@ -30,7 +30,7 @@
 					</div>
 					<div class="col-md-7 " >
 						<p class="font-weight-light my-0"> <span class="localized en">Issuer</span> </p>
-						<p class="font-weight-bold lead "><span class="localized en">{{sourceIssuer}}</span></p>
+						<p class="font-weight-bold lead "><span class="localized en">https://www.ca.gov/</span></p>
 						<p class="font-weight-light my-0"> <span class="localized en">Vaccine Card Type</span> </p>
 						<p class="font-weight-bold lead "><span class="localized en" >{{vaccineCard}}</span></p>
 					</div>
