@@ -13,6 +13,9 @@
 		<div class="row">
 			<div class="col-md-4 p-2">
 				<div class="cardbox  text-center p-3">
+          	<picture>
+						<source media="(max-width: 799px)" srcset="../assets/images/ca_gov.jpg">
+						<source media="(min-width: 800px)" srcset="../assets/images/ca_gov.jpg"> <img class="img-fluid ca-logo mx-auto" src="../assets/images/ca_gov.jpg" alt="CA.gov Logo"> </picture>
 					<h3>Upload Vaccine QR Code</h3>
 					<qrcode-capture @decode="onDecode" accept="image/*;capture=camera" class="img-fluid" />
 					<div id="qrCode" class="img-fluid p-3"></div>
