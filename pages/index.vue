@@ -13,8 +13,11 @@
 		<div class="row">
 			<div class="col-md-4 p-2">
 				<div class="cardbox  text-center p-3">
+          	<picture>
+						<source media="(max-width: 799px)" srcset="../assets/images/ca_gov.jpg">
+						<source media="(min-width: 800px)" srcset="../assets/images/ca_gov.jpg"> <img class="img-fluid ca-logo mx-auto" src="../assets/images/ca_gov.jpg" alt="CA.gov Logo"> </picture>
 					<h3>Upload Vaccine QR Code</h3>
-					<qrcode-capture @decode="onDecode" class="img-fluid" />
+					<qrcode-capture @decode="onDecode" accept="image/*;capture=camera" class="img-fluid" />
 					<div id="qrCode" class="img-fluid p-3"></div>
 					<button v-if="download" @click="downloadPdf" class="btn btn-primary col-12">Download</button>
 				</div>
@@ -30,7 +33,7 @@
 					</div>
 					<div class="col-md-7 " >
 						<p class="font-weight-light my-0"> <span class="localized en">Issuer</span> </p>
-						<p class="font-weight-bold lead "><span class="localized en">https://www.ca.gov/</span></p>
+						<p class="font-weight-bold lead "><span class="localized en">{{sourceIssuer}}</span></p>
 						<p class="font-weight-light my-0"> <span class="localized en">Vaccine Card Type</span> </p>
 						<p class="font-weight-bold lead "><span class="localized en" >{{vaccineCard}}</span></p>
 					</div>

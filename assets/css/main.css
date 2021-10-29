@@ -1,4 +1,12 @@
+  
+  .container.passport-wide {
+    max-width: 1440px;
+  }
 
+  .ca-logo{
+    max-width: 150px;
+    margin:24px;
+  }
 /* Default Bootstrap CSS */
 .container {
     width: 100%;
@@ -6,8 +14,7 @@
     margin-left: auto;
     display: block;
   }
-  
-  
+
   .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
     width: 100%;
     margin-right: auto;
